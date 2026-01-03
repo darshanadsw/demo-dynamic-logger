@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: demo-dynamic-logger
+  cloud:
+    config:
+      # Point to the Config Server (run demo-dynamic-logger-config-server first)
+      uri: ${SPRING_CLOUD_CONFIG_URI:http://localhost:8888}
+      fail-fast: false
+

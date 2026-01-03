@@ -1,0 +1,17 @@
+# External configuration file for demo-dynamic-logger
+# This file can be edited and refreshed via /actuator/refresh endpoint
+# The library will automatically reload when method-logger properties change
+
+method-logger:
+  enabled: true
+  # Define which packages/classes to log
+  packages:
+    - com.example.demodynamiclogger.service
+
+  # --- Logging details ---
+  log-arguments: true
+  log-return-value: true
+  min-execution-time-ms: 0 # Log all methods regardless of execution time (0 = log everything)
+  max-return-size: -1
+  mask-sensitive-fields: false
+

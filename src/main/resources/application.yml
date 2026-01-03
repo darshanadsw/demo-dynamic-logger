@@ -1,0 +1,24 @@
+
+# Enable the /refresh endpoint for dynamic configuration changes
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "refresh,methodLogger"
+
+# Configuration for your library
+configurable:
+  logger:
+    # The base package where the logger will look for beans to apply AOP.
+    # This is important for performance so it doesn't scan your entire application.
+    base-package: com.example.demodynamiclogger
+    # Auto-refresh is enabled by default when Spring Cloud Config is present
+    auto-refresh: true
+
+# Note: method-logger configuration is served by Spring Cloud Config Server
+# Configuration file: demo-dynamic-logger-config-server/config-repo/demo-dynamic-logger.yml
+# Edit that file and call POST /actuator/refresh to update configuration
+# The library will automatically reload when method-logger properties change!
+spring:
+  application:
+    name: demo-dynamic-logger
